@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "update-project1"
+version = "0.1.0"
+description = "updated task sorting project"
+authors = ["pytonistdarkweb <edgaravetan2@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+fastapi = {extras = ["all"], version = "^0.115.6"}
+sqlalchemy = {extras = ["asyncio"], version = "^2.0.36"}
+asyncio = "^3.4.3"
+mypy = "^1.14.0"
+pytest = "^8.3.4"
+passlib = "^1.7.4"
+asyncpg = "^0.30.0"
+alembic = "^1.14.0"
+poetry = "^1.8.5"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
