@@ -10,10 +10,7 @@ class Base(DeclarativeBase):
 engine = create_async_engine(
     db_settings.DATABASE_URL,
     echo=db_settings.DEBUG,
-    pool_pre_ping=True,
-    autocommit=False,
-    autoflush=False,
-    future=True
+    
 )
 
 
@@ -23,6 +20,5 @@ AsyncSessionLocal = async_sessionmaker(
     expire_on_commit=False,
     autocommit=False,
     autoflush=False,
-    future=True
 )
 

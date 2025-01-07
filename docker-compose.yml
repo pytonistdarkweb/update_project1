@@ -1,25 +1,13 @@
 services:
-  web:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: fastapi_app
-    ports:
-      - "8000:8000"
-    environment:
-      - DATABASE_URL=postgresql+asyncpg://postgres:postgres@db:5432/postgres_edgar
-    depends_on:
-      - db
-
   db:
-    image: postgres:16  
-    container_name: postgres_edgar_container
+    image: postgres:16
+    container_name: postgres_db
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: postgres_edgar
+      POSTGRES_DB: postgres
     ports:
-      - "5435:5432"
+      - "5433:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
 

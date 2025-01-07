@@ -1,9 +1,10 @@
 from fastapi import FastAPI
-import uvicorn
-from app.core.config import server_settings,ServerSettings
-from app.infrastructure.db import close_db
+from app.infrastructure.resources import close_db
+from app.api.endpoints.auth import auth_router
+from app.api.endpoints.tasks import tasks_router
 from contextlib import asynccontextmanager
-
+import uvicorn
+from app.core.config import server_settings
 
 
 @asynccontextmanager
@@ -15,19 +16,17 @@ async def lifespan(app: FastAPI):
         print("Application shutdown: Closing database connections.")
         await close_db()
 
+
 app = FastAPI(lifespan=lifespan)
 
 
-@app.get("/")
-def read_root():
-    return {"message": "Hello, World!"}
-
-
+app.include_router(auth_router)
+app.include_router(tasks_router)
 
 
 if __name__ == "__main__":
     uvicorn.run(
-        "main:app", 
+        "app/main:app", 
         host=server_settings.HOST,
         port=server_settings.PORT,
         reload=server_settings.RELOAD

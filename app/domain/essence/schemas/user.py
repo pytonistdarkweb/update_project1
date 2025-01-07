@@ -1,8 +1,8 @@
-from pydantic import BaseModel, EmailStr, Field
+from pydantic import BaseModel, EmailStr, Field, ConfigDict
 
 class User(BaseModel):
-    class Config:
-        from_attributes = True
+    class Config(ConfigDict):
+        model_config = ConfigDict(orm_mode=True)
 
 
 class UserCreate(User):

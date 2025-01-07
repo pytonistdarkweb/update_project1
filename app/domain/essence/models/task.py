@@ -13,7 +13,5 @@ class Task(Base):
     description: Mapped[str] = mapped_column(nullable=False)
     start_time: Mapped[datetime] = mapped_column(nullable=False)
     end_time: Mapped[datetime] = mapped_column(nullable=False)
-    created_at: Mapped[datetime] = mapped_column(default=func.now())
-    updated_at: Mapped[datetime] = mapped_column(default=func.now(), onupdate=func.now())
     user: Mapped["User"] = relationship(back_populates="tasks")
 

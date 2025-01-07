@@ -5,5 +5,5 @@ async def get_db():
     async with AsyncSessionLocal() as session:
         try:
             yield session
-        finally:
+        finally:    
             await session.close()

@@ -18,8 +18,9 @@ class Settings(BaseAppSettings):
 
 class DatabaseSettings(BaseAppSettings):
     """Database connection settings"""
-    DATABASE_URL: str = "postgresql+asyncpg://postgres:postgres@localhost:5435/postgres_edgar"
-
+    DATABASE_URL: str ="postgresql+asyncpg://postgres:postgres@localhost:5433/postgres"
+    DEBUG: bool = False
+    
 
 class ServerSettings(BaseAppSettings):
     """Server configuration settings"""
